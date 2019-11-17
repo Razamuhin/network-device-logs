@@ -1,0 +1,29 @@
+title: Tool Command Language Scripts
+status: experimental
+description: Tool Command Language (TCL) comes standard on most Cisco infrastructure devices. TCL scripts may be used for a wide variety of functions, including the proof of concept backdoor linked in the references.
+references:
+    - https://attack.mitre.org/techniques/T1064/
+    - http://hax.tor.hu/read/cisco/Creating_Backdoors_in_Cisco_IOS_using_Tcl.pdf
+    - https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ios_tcl/configuration/12-4t/ios-tcl-12-4t-book/nm-script-tcl.html
+author: Robert Wilson
+date: 2019/11/16
+tags:
+    - attack.scripting
+    - attack.execution
+    - attack.command_and_control
+    - attack.defense_evasion
+    - attack.impact
+    - attack.t1064
+logsource:
+    product: cisco
+    service: aaa
+    category: accounting
+fields:
+    - CmdSet
+detection:
+    keywords:
+        - 'tclsh'
+    condition: keywords
+falsepositives:
+    - Will vary by network and the degree to which admins rely on tclsh.
+level: medium
